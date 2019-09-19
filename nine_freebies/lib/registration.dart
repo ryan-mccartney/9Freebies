@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:card_settings/card_settings.dart';
 import 'loaders/color_loader_2.dart';
 import 'main.dart';
+import 'home.dart';
 import 'utils.dart';
 
 class RegistrationScreen extends StatelessWidget {
@@ -283,7 +284,7 @@ class _LoadingPageState extends State<LoadingPage> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 2)).then((__) {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => MyHomePage()));
+      Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
     });
   }
 

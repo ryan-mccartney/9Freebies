@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'color_loader_2.dart';
+import 'utils.dart';
 
 //Color blue1 = Color(0xff01b2ff);
 //Color blue2 = Color(0xffb1e4ff);
@@ -78,7 +79,7 @@ class RandomWordsState extends State<RandomWords> {
                         left: 40.0,
                         top: 35.0,
                         child: Text(
-                          '5',
+                          '1',
                           style: _jumboWhiteFont,
                         ),
                       )
@@ -121,17 +122,22 @@ class RandomWordsState extends State<RandomWords> {
         Expanded(
           child: Container(
             decoration: const BoxDecoration(color: Color(0xffb1e4ff)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.loyalty,
-                  color: Colors.white,
-                  size: 50.0,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => InvitationLoadingPage()));
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.loyalty,
+                    color: Colors.white,
+                    size: 50.0,
+                  ),
+                  Text('Find Freebies', style: _jumboWhiteFont),
+                  ],
                 ),
-                Text('Find Freebies', style: _jumboWhiteFont),
-              ],
-            ),
+            )
           ),
           flex: 1,
         ),
@@ -202,5 +208,37 @@ class Freebie {
     this.description = description;
     this.expiry = expiry;
     this.icon = iconData;
+  }
+}
+
+class InvitationLoadingPage extends StatefulWidget {
+  @override
+  _InvitationLoadingPageState createState() => _InvitationLoadingPageState();
+}
+
+class _InvitationLoadingPageState extends State<InvitationLoadingPage> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 2)).then((__) {
+      Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: hexToColor("#1b2d36"),
+      body: Center(
+        child: Container(
+          color: hexToColor("#1b2d36"),
+          child: ColorLoader2 (
+          color1: Colors.lightBlueAccent,
+          color2: Colors.redAccent,
+          color3: Colors.blueAccent
+        )
+        )
+      )
+    ); // this widget stays here for 2 seconds
   }
 }
