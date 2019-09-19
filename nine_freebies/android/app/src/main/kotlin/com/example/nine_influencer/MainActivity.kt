@@ -1,4 +1,4 @@
-package com.example.nine_influencer
+package com.example.nine_freebies
 
 import android.os.Bundle
 

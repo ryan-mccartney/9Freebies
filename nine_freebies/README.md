@@ -1,4 +1,4 @@
-# nine_influencer
+# nine_freebies
 
 A new Flutter project.
 
