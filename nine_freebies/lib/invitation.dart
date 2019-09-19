@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:card_settings/card_settings.dart';
 import 'loaders/color_loader_2.dart';
+import 'ad_info_screen.dart';
 import 'utils.dart';
 import 'qrcode_presenter.dart';
 
@@ -170,7 +171,7 @@ class _CouponLoadingPageState extends State<CouponLoadingPage> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 2)).then((__) {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => QRCodePage()));
+      Navigator.push(context, MaterialPageRoute(builder: (_) => AdInfoPage()));
     });
   }
 

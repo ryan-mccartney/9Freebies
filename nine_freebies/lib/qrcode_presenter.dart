@@ -50,7 +50,7 @@ class QRCodePresenter extends State<QRCode> {
                     header: CardSettingsHeader(label: 'Freebie Invitation'),
                     instructions: CardSettingsInstructions(
                         text:
-                            'Congratulations - we have a new sample waiting for you!\n\nA new launch from A2 Milk, a lactose-free milk from the number 1\nmilk suppliers in Australia.\n\nScan this QR code at your nearest Coles or Woolworths to redeem\nyour free sample.\nMake sure to share your experience!\n\nOne product per code. Read full Terms and Conditions for further info.'),
+                            'Congratulations - we have a new sample waiting for you!\n\nA new launch from A2 Milk, a lactose-free milk from the number \n1 milk suppliers in Australia.\n\nScan this QR code at your nearest Coles or Woolworths to \nredeem your free sample.\nMake sure to share your experience!\n\nOne product per code. \nRead full Terms and Conditions for further info.'),
                   ),
                   CardSettingsSection(children: <Widget>[
                     CardSettingsButton(
