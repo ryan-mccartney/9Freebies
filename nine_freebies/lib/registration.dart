@@ -307,8 +307,8 @@ class _LoadingPageState extends State<LoadingPage> {
 
 class User {
   // About You
-  String firstName = "Ryan";
-  String lastName = "McCartney";
+  String firstName = "Nancy";
+  String lastName = "Drew";
   String gender;
   int age = 22; 
   String email;
