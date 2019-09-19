@@ -33,224 +33,228 @@ class RegistrationForm extends State<Registration> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        title: Text("Registration",)
-      ),
+      backgroundColor: Colors.blueGrey,
       body: Form(
         key: _formKey,
-        child: CardSettings.sectioned(
-          children: <CardSettingsSection>[
-            CardSettingsSection(
-              header: CardSettingsHeader(label: 'About You'),
-              children: <Widget>[
-                CardSettingsText(
-                  label: 'First Name',
-                  initialValue: _user.firstName,
-                  autovalidate: _autoValidate,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) return 'First Name is required.';
-                  },
-                  onSaved: (value) => _user.firstName = value,
-                  onChanged: (value) {
-                    setState(() {
-                      _user.firstName = value;
-                    });
-                  },
-                ),
-                CardSettingsText(
-                  label: 'Last Name',
-                  initialValue: _user.lastName,
-                  autovalidate: _autoValidate,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) return 'Last Name is required.';
-                  },
-                  onSaved: (value) => _user.lastName = value,
-                  onChanged: (value) {
-                    setState(() {
-                      _user.lastName = value;
-                    });
-                  },
-                ),
-                CardSettingsEmail(
-                  icon: Icon(Icons.email),
-                  initialValue: _user.email,
-                  autovalidate: _autoValidate,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) return 'Email is required.';
-                    if (!value.contains('@'))
-                      return "Email not formatted correctly.";
-                    return null;
-                  },
-                  onChanged: (value) {
-                    setState(() {
-                      _user.email = value;
-                    });
-                  },
-                ),
-                  //onSaved: (value) => email = value,),
-                CardSettingsNumberPicker(
-                  label: 'Age',
-                  initialValue: _user.age,
-                  min: 18,
-                  max: 99,
-                  autovalidate: _autoValidate,
-                  validator: (value) {
-                    if (value == null) return 'Age is required';
-                    return null;
-                  },
-                  onChanged: (value) {
-                    setState(() {
-                      _user.age = value;
-                    });
-                  },
-                ),
-                CardSettingsListPicker(
-                  label: 'Gender',
-                  hintText: 'Select gender...',
-                  initialValue: _user.gender,
-                  autovalidate: _autoValidate,
-                  options: <String>['Male', 'Female', 'Other'],
-                  validator: (String value) {
-                    if (value == null || value.isEmpty) return 'You must pick a gender.';
-                    return null;
-                  },
-                  onChanged: (value) {
-                    setState(() {
-                      _user.gender = value;
-                    });
-                  }
-                ),
-                CardSettingsListPicker(
-                  label: 'Location (State)',
-                  hintText: 'Select state...',
-                  initialValue: _user.location,
-                  autovalidate: _autoValidate,
-                  options: <String>['NSW', 'SA', 'ACT', 'NT', 'WA', 'QLD', 'VIC'],
-                  validator: (String value) {
-                    if (value == null || value.isEmpty) return 'You must pick a state.';
-                    return null;
-                  },
-                  onChanged: (value) {
-                    setState(() {
-                      _user.location = value;
-                    });
-                  }
-                ),
-                CardSettingsMultiselect(
-                  label: 'Interests',
-                  initialValues: _user.interests,
-                  autovalidate: _autoValidate,
-                  options: allInterests,
-                  validator: (List<String> value) {
-                    if (value == null || value.isEmpty || value.length < 3)
-                      return 'You must pick at least three (3) interests.';
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            backgroundColor: hexToColor("#1b2d36"),
+            accentColor: hexToColor("#1b2d36"),
+          ),
+          child: CardSettings.sectioned(
+            children: <CardSettingsSection>[
+              CardSettingsSection(
+                header: CardSettingsHeader(label: 'About You'),
+                children: <Widget>[
+                  CardSettingsText(
+                    label: 'First Name',
+                    initialValue: _user.firstName,
+                    autovalidate: _autoValidate,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) return 'First Name is required.';
+                    },
+                    onSaved: (value) => _user.firstName = value,
+                    onChanged: (value) {
+                      setState(() {
+                        _user.firstName = value;
+                      });
+                    },
+                  ),
+                  CardSettingsText(
+                    label: 'Last Name',
+                    initialValue: _user.lastName,
+                    autovalidate: _autoValidate,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) return 'Last Name is required.';
+                    },
+                    onSaved: (value) => _user.lastName = value,
+                    onChanged: (value) {
+                      setState(() {
+                        _user.lastName = value;
+                      });
+                    },
+                  ),
+                  CardSettingsEmail(
+                    icon: Icon(Icons.email),
+                    initialValue: _user.email,
+                    autovalidate: _autoValidate,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) return 'Email is required.';
+                      if (!value.contains('@'))
+                        return "Email not formatted correctly.";
+                      return null;
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        _user.email = value;
+                      });
+                    },
+                  ),
+                    //onSaved: (value) => email = value,),
+                  CardSettingsNumberPicker(
+                    label: 'Age',
+                    initialValue: _user.age,
+                    min: 18,
+                    max: 99,
+                    autovalidate: _autoValidate,
+                    validator: (value) {
+                      if (value == null) return 'Age is required';
+                      return null;
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        _user.age = value;
+                      });
+                    },
+                  ),
+                  CardSettingsListPicker(
+                    label: 'Gender',
+                    hintText: 'Select gender...',
+                    initialValue: _user.gender,
+                    autovalidate: _autoValidate,
+                    options: <String>['Male', 'Female', 'Other'],
+                    validator: (String value) {
+                      if (value == null || value.isEmpty) return 'You must pick a gender.';
+                      return null;
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        _user.gender = value;
+                      });
+                    }
+                  ),
+                  CardSettingsListPicker(
+                    label: 'Location (State)',
+                    hintText: 'Select state...',
+                    initialValue: _user.location,
+                    autovalidate: _autoValidate,
+                    options: <String>['NSW', 'SA', 'ACT', 'NT', 'WA', 'QLD', 'VIC'],
+                    validator: (String value) {
+                      if (value == null || value.isEmpty) return 'You must pick a state.';
+                      return null;
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        _user.location = value;
+                      });
+                    }
+                  ),
+                  CardSettingsMultiselect(
+                    label: 'Interests',
+                    initialValues: _user.interests,
+                    autovalidate: _autoValidate,
+                    options: allInterests,
+                    validator: (List<String> value) {
+                      if (value == null || value.isEmpty || value.length < 3)
+                        return 'You must pick at least three (3) interests.';
 
-                    return null;
-                  },
-                  onChanged: (value) {
-                    setState(() {
-                      _user.interests = value;
-                    });
-                  }
-                ),
-                CardSettingsListPicker(
-                  label: 'Employment Status',
-                  hintText: 'Select employment status...',
-                  initialValue: _user.employmentStatus,
-                  autovalidate: _autoValidate,
-                  options: <String>['full time', 'part time', 'studying', 'run my own business', 'unemployed'],
-                  validator: (String value) {
-                    if (value == null || value.isEmpty) return 'You must pick an employment status.';
-                    return null;
-                  },
-                  onChanged: (value) {
-                    setState(() {
-                      _user.employmentStatus = value;
-                    });
-                  }
-                ),
-              ], 
-            ),
-            CardSettingsSection(
-              header: CardSettingsHeader(label: 'About Your Family'),
-              children: <Widget>[
-                CardSettingsSwitch(
-                  label: 'Baby on the way?',
-                  initialValue: _user.babySoon,
-                  onChanged: (value) {
-                    setState(() {
-                      _user.babySoon = value;
-                    });
-                  },
-                ),
-                CardSettingsNumberPicker(
-                  label: 'Number of kids',
-                  initialValue: _user.numberOfKids,
-                  min: 0,
-                  max: 10,
-                  autovalidate: _autoValidate,
-                  validator: (value) {
-                    if (value == null) return 'Number of kids is required';
-                    return null;
-                  },
-                  onChanged: (value) {
-                    setState(() {
-                      _user.numberOfKids = value;
-                    });
-                  },
-                ),
-                CardSettingsSwitch(
-                  label: 'Any pets owned?',
-                  initialValue: _user.anyPets,
-                  onChanged: (value) {
-                    setState(() {
-                      _user.anyPets = value;
-                    });
-                  },
-                ),
-                CardSettingsMultiselect(
-                  label: 'Types of pets owned',
-                  initialValues: _user.petsOwned,
-                  autovalidate: _autoValidate,
-                  options: allPets,
-                  visible: _user.anyPets,
-                  validator: (List<String> value) {
-                    if (value == null || value.isEmpty)
-                      return 'You must pick at least one pet.';
-
-                    return null;
-                  },
-                  onChanged: (value) {
-                    setState(() {
-                      _user.petsOwned = value;
-                    });
-                  }
-                ),
-              ]
-            ),
-            CardSettingsSection(
-              header: CardSettingsHeader(
-                label: 'Complete registration',
+                      return null;
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        _user.interests = value;
+                      });
+                    }
+                  ),
+                  CardSettingsListPicker(
+                    label: 'Employment Status',
+                    hintText: 'Select employment status...',
+                    initialValue: _user.employmentStatus,
+                    autovalidate: _autoValidate,
+                    options: <String>['full time', 'part time', 'studying', 'run my own business', 'unemployed'],
+                    validator: (String value) {
+                      if (value == null || value.isEmpty) return 'You must pick an employment status.';
+                      return null;
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        _user.employmentStatus = value;
+                      });
+                    }
+                  ),
+                ], 
               ),
-              children: <Widget>[
-                CardSettingsSwitch(
-                  label: 'Agree to T&C\'s?',
-                  initialValue: _user.agree,
-                  onChanged: (value) {
-                    setState(() {
-                      _user.agree = value;
-                    });
-                  },
+              CardSettingsSection(
+                header: CardSettingsHeader(label: 'About Your Family'),
+                children: <Widget>[
+                  CardSettingsSwitch(
+                    label: 'Baby on the way?',
+                    initialValue: _user.babySoon,
+                    onChanged: (value) {
+                      setState(() {
+                        _user.babySoon = value;
+                      });
+                    },
+                  ),
+                  CardSettingsNumberPicker(
+                    label: 'Number of kids',
+                    initialValue: _user.numberOfKids,
+                    min: 0,
+                    max: 10,
+                    autovalidate: _autoValidate,
+                    validator: (value) {
+                      if (value == null) return 'Number of kids is required';
+                      return null;
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        _user.numberOfKids = value;
+                      });
+                    },
+                  ),
+                  CardSettingsSwitch(
+                    label: 'Any pets owned?',
+                    initialValue: _user.anyPets,
+                    onChanged: (value) {
+                      setState(() {
+                        _user.anyPets = value;
+                      });
+                    },
+                  ),
+                  CardSettingsMultiselect(
+                    label: 'Types of pets owned',
+                    initialValues: _user.petsOwned,
+                    autovalidate: _autoValidate,
+                    options: allPets,
+                    visible: _user.anyPets,
+                    validator: (List<String> value) {
+                      if (value == null || value.isEmpty)
+                        return 'You must pick at least one pet.';
+
+                      return null;
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        _user.petsOwned = value;
+                      });
+                    }
+                  ),
+                ]
+              ),
+              CardSettingsSection(
+                header: CardSettingsHeader(
+                  label: 'Complete registration',
                 ),
-                CardSettingsButton(
-                  label: 'Register',
-                  onPressed: _savePressed,
-                  visible: _user.agree,
-                  backgroundColor: Colors.lightBlueAccent,
-                ),
-              ]
-            )
-          ],
+                children: <Widget>[
+                  CardSettingsSwitch(
+                    label: 'Agree to T&C\'s?',
+                    initialValue: _user.agree,
+                    onChanged: (value) {
+                      setState(() {
+                        _user.agree = value;
+                      });
+                    },
+                  ),
+                  CardSettingsButton(
+                    label: 'Register',
+                    onPressed: _savePressed,
+                    visible: _user.agree,
+                    backgroundColor: Colors.blueAccent,
+                  ),
+                ]
+              )
+            ],
+          )
         )
       ),
     );
