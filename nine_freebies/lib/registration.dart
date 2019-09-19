@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:card_settings/card_settings.dart';
 import 'loaders/color_loader_2.dart';
-import 'main.dart';
 import 'home.dart';
 import 'utils.dart';
 

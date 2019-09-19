@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'color_loader_2.dart';
 import 'utils.dart';
+import 'invitation.dart';
 
 //Color blue1 = Color(0xff01b2ff);
 //Color blue2 = Color(0xffb1e4ff);
@@ -221,7 +222,7 @@ class _InvitationLoadingPageState extends State<InvitationLoadingPage> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 2)).then((__) {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
+      Navigator.push(context, MaterialPageRoute(builder: (_) => InvitationPage()));
     });
   }
 
