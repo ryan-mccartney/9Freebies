@@ -109,6 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                  reviewItem: new ReviewItem(
                    productDescription: "This is a test product",
                    productName: "Test Product",
+                   ratingQuestion: "How did it test?",
                    isFacebookShared: false, 
                    isInstagramShared: true, 
                    isTwitterShared: true,
