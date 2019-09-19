@@ -105,7 +105,7 @@ class ReviewForm extends State<Review> {
                       decoration: new BoxDecoration(          
                         color: Colors.white,                                            
                         ),   
-                        child: new RatingsWidget(fontColour: Colors.black)
+                        child: new RatingsWidget(fontColour: Colors.black, ratingQuestion: reviewItem.ratingQuestion,)
                       ),
 
                       // new Container(
@@ -202,11 +202,13 @@ class ReviewItem {
     this.productDescription,
     this.productName,
     this.writtenReview,
-    this.requiredTags
+    this.requiredTags,
+    this.ratingQuestion
   });
 
   String productName = "Test Product";
   String productDescription = "This is a test product.";
+  String ratingQuestion = "How did you find this freebie?";
   String writtenReview = "";
   List<String> requiredTags;
   List<String> userInputTags;
