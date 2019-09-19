@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nine_freebies/review_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -98,6 +99,22 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
+            RaisedButton(
+              onPressed: () {
+                List<String> tags = new List<String>();
+                tags.add('#hackathon2019');
+                tags.add('#9freebie');
+                Navigator.push(context,
+               MaterialPageRoute(builder: (context) => ReviewScreen(
+                 reviewItem: new ReviewItem(
+                   productDescription: "This is a test product",
+                   productName: "Test Product",
+                   isFacebookShared: false, 
+                   isInstagramShared: true, 
+                   isTwitterShared: true,
+                   requiredTags: tags))));},
+              child: Text('Review Screen'),
+            )
           ],
         ),
       ),
