@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'login_screen.dart';
+import 'utils.dart';
 
 void main() => runApp(MyApp());
 
@@ -36,16 +38,27 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  //131516
+  final Color _bColorMain = hexToColor("#1b2d36");
+
+  //373D3F
+  final Color _bColorSecondary = hexToColor("#1e2324");
+
+  //AACCFF
+  final Color _fColorMain = hexToColor("#AACCFF");
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Text('Welcome to')
-          ]
-        ),
+      body: Container(
+        child: LoginScreen(
+          backgroundColor1: _bColorMain,
+          backgroundColor2: _bColorSecondary,
+          highlightColor: Colors.blueAccent,
+          foregroundColor: _fColorMain,
+          logo: new AssetImage("assets/nine_freebies_logo.png"),
+       ),
       )
     );
   }
