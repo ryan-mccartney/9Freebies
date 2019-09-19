@@ -163,21 +163,21 @@ class RandomWordsState extends State<RandomWords> {
           final index = i ~/ 2; /*3*/
           if (index >= _freebies.length) {
             _freebies.add(new Freebie(
-                "It's Pizza Time", "12/11/2099", Icons.local_pizza));
-            _freebies.add(new Freebie("Scooby Snacks", "N/A", Icons.pets));
+                "It's Pizza Time", "12/11/2099", Icons.local_pizza, "How much did you enjoy the Pizza?"));
+            _freebies.add(new Freebie("Scooby Snacks", "N/A", Icons.pets, "How enjoyable were the 'Scooby Snacks'"));
             _freebies.add(new Freebie(
-                "Back-to-School Stationery", "12/11/2099", Icons.school));
+                "Back-to-School Stationery", "12/11/2099", Icons.school, "How did you find the stationary - out of 5 stars?"));
             _freebies.add(new Freebie(
-                "Smart Home Lights", "16/04/2020", Icons.wb_incandescent));
+                "Smart Home Lights", "16/04/2020", Icons.wb_incandescent, "How did you find the 'Smart Home Lights'?"));
             _freebies
-                .add(new Freebie("BBQ Firestarters", "N/A", Icons.whatshot));
+                .add(new Freebie("BBQ Firestarters", "N/A", Icons.whatshot, "How useful were the 'BBQ Firestarters'?"));
           }
           return _buildRow(_freebies[index].description,
-              _freebies[index].expiry, _freebies[index].icon, _freebies[index].isReviewed);
+              _freebies[index].expiry, _freebies[index].icon, _freebies[index].isReviewed, _freebies[index].reviewRatingQuestion);
         });
   }
 
-  Widget _buildRow(String description, String expiry, IconData iconData, bool isReviewed) {
+  Widget _buildRow(String description, String expiry, IconData iconData, bool isReviewed, String ratingQuestion) {
     return ListTile(
       leading: Icon(
         iconData,
@@ -199,7 +199,8 @@ class RandomWordsState extends State<RandomWords> {
           requiredTags.add('#9freebies');
           var reviewItem = new ReviewItem(
             productName: description,
-            requiredTags: requiredTags,            
+            requiredTags: requiredTags,
+            ratingQuestion: ratingQuestion,            
           );
           Navigator.push(context, MaterialPageRoute(builder: (context) => ReviewScreen(reviewItem: reviewItem,)));
         }
@@ -218,12 +219,14 @@ class Freebie {
   String expiry;
   IconData icon;
   bool isReviewed;
+  String reviewRatingQuestion;
 
-  Freebie(String description, String expiry, IconData iconData, [bool isReviewed = false]) {
+  Freebie(String description, String expiry, IconData iconData, String reviewRatingQuestion, [bool isReviewed = false]) {
     this.description = description;
     this.expiry = expiry;
     this.icon = iconData;
     this.isReviewed = isReviewed;
+    this.reviewRatingQuestion = reviewRatingQuestion;
   }
 }
 
