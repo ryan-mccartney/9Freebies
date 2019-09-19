@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'color_loader_2.dart';
 import 'utils.dart';
 import 'invitation.dart';
+import 'package:nine_freebies/review_screen.dart';
 
 //Color blue1 = Color(0xff01b2ff);
 //Color blue2 = Color(0xffb1e4ff);
@@ -172,11 +173,11 @@ class RandomWordsState extends State<RandomWords> {
                 .add(new Freebie("BBQ Firestarters", "N/A", Icons.whatshot));
           }
           return _buildRow(_freebies[index].description,
-              _freebies[index].expiry, _freebies[index].icon);
+              _freebies[index].expiry, _freebies[index].icon, _freebies[index].isReviewed);
         });
   }
 
-  Widget _buildRow(String description, String expiry, IconData iconData) {
+  Widget _buildRow(String description, String expiry, IconData iconData, bool isReviewed) {
     return ListTile(
       leading: Icon(
         iconData,
@@ -191,6 +192,18 @@ class RandomWordsState extends State<RandomWords> {
         style: TextStyle(
             fontStyle: FontStyle.italic, color: Colors.grey, fontSize: 12.0),
       ),
+      onTap: () {
+        if (!isReviewed) {
+          var requiredTags = List<String>();
+          requiredTags.add('#hackathon2019');
+          requiredTags.add('#9freebies');
+          var reviewItem = new ReviewItem(
+            productName: description,
+            requiredTags: requiredTags,            
+          );
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ReviewScreen(reviewItem: reviewItem,)));
+        }
+      },      
     );
   }
 }
@@ -204,11 +217,13 @@ class Freebie {
   String description;
   String expiry;
   IconData icon;
+  bool isReviewed;
 
-  Freebie(String description, String expiry, IconData iconData) {
+  Freebie(String description, String expiry, IconData iconData, [bool isReviewed = false]) {
     this.description = description;
     this.expiry = expiry;
     this.icon = iconData;
+    this.isReviewed = isReviewed;
   }
 }
 
