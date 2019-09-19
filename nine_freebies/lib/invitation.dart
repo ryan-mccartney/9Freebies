@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:card_settings/card_settings.dart';
 import 'loaders/color_loader_2.dart';
 import 'utils.dart';
+import 'qrcode_presenter.dart';
 
 class InvitationPage extends StatelessWidget {
   @override
@@ -169,7 +170,7 @@ class _CouponLoadingPageState extends State<CouponLoadingPage> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 2)).then((__) {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => InvitationPage()));
+      Navigator.push(context, MaterialPageRoute(builder: (_) => QRCodePage()));
     });
   }
 
