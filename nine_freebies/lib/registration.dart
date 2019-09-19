@@ -250,6 +250,7 @@ class RegistrationForm extends State<Registration> {
                     onPressed: _savePressed,
                     visible: _user.agree,
                     backgroundColor: Colors.blueAccent,
+                    bottomSpacing: 2.0
                   ),
                 ]
               )
