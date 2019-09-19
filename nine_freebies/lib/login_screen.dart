@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'buttons/simple_round_button.dart';
+import 'home.dart';
 
 class LoginScreen extends StatelessWidget {
   final Color backgroundColor1;
@@ -142,7 +143,7 @@ class LoginScreen extends StatelessWidget {
                             color: Colors.white
                         ),
                     ),
-                    onPressed: () => {},
+                    onPressed: () { navigateToHomePage(context); },
                 ),
                 ),
               ],
@@ -198,4 +199,8 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+Future navigateToHomePage(context) async {
+  Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
 }
