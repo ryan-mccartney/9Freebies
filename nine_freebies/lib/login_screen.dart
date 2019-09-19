@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'buttons/simple_round_button.dart';
+import 'registration.dart';
 
 class LoginScreen extends StatelessWidget {
   final Color backgroundColor1;
@@ -184,7 +185,11 @@ class LoginScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         vertical: 20.0, horizontal: 20.0),
                     color: Colors.transparent,
-                    onPressed: () => {},
+                    onPressed: () => { 
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => RegistrationScreen()
+                        ))
+                      },
                     child: Text(
                       "Don't have an account? Register here.",
                       style: TextStyle(color: this.foregroundColor.withOpacity(0.5)),
