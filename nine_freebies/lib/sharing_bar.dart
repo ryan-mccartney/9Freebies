@@ -41,7 +41,13 @@ class SharingState extends State<SharingWidget> {
           height: 80,
           width: 80,
           child: RawMaterialButton(
-            onPressed: () {},          
+            onPressed: () {
+              if (detail.isFacebookEnabled)  {
+                final snackBar = SnackBar(content: Text('Successfully posted your review to your Facebook wall!'));
+                Scaffold.of(context).showSnackBar(snackBar);
+                detail.isFacebookEnabled = false;
+              }
+            },          
             child: Image(
                 image: new AssetImage('assets/facebook_icon' + (detail.isFacebookEnabled ? '' : '_disabled') + '.png'),
                 fit: BoxFit.fill
@@ -56,7 +62,13 @@ class SharingState extends State<SharingWidget> {
           height: 80,
           width: 80,
           child: RawMaterialButton(
-            onPressed: () {},          
+            onPressed: () {
+              if (detail.isInstagramEnabled)  {
+                final snackBar = SnackBar(content: Text('Successfully posted your review to Instagram! #nofilter'));
+                Scaffold.of(context).showSnackBar(snackBar);
+                detail.isInstagramEnabled = false;
+              }
+            },          
             child: Image(
                 image: new AssetImage('assets/instagram_icon' + (detail.isInstagramEnabled ? '' : '_disabled') + '.png'),
                 fit: BoxFit.fill
@@ -71,7 +83,13 @@ class SharingState extends State<SharingWidget> {
           height: 80,
           width: 80,
           child: RawMaterialButton(                        
-            onPressed: () {},          
+            onPressed: () {
+              if (detail.isTwitterEnabled)  {
+                final snackBar = SnackBar(content: Text('Successfully tweeted your review!'));
+                Scaffold.of(context).showSnackBar(snackBar);
+                detail.isTwitterEnabled = false;
+              }
+            },          
             child: Image(
                 image: new AssetImage('assets/twitter_icon' + (detail.isTwitterEnabled ? '' : '_disabled') + '.png'),
                 fit: BoxFit.fill,                
@@ -96,7 +114,7 @@ class SharingDetail {
     this.isFacebookEnabled
   });
 
-  bool isFacebookEnabled;
-  bool isInstagramEnabled;
-  bool isTwitterEnabled;
+  bool isFacebookEnabled = true;
+  bool isInstagramEnabled = true;
+  bool isTwitterEnabled = true;
 }

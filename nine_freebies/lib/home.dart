@@ -7,6 +7,8 @@ import 'color_loader_2.dart';
 import 'utils.dart';
 import 'invitation.dart';
 import 'package:nine_freebies/review_screen.dart';
+import 'package:overlay_support/overlay_support.dart';
+
 
 //Color blue1 = Color(0xff01b2ff);
 //Color blue2 = Color(0xffb1e4ff);
@@ -21,7 +23,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Welcome to NineFreebies',
-      home: RandomWords(),
+      home: RandomWords(),      
     );
   }
 }
@@ -31,9 +33,40 @@ class RandomWordsState extends State<RandomWords> {
   final _jumboWhiteFont = const TextStyle(fontSize: 36.0, color: Colors.white);
   final _bigWhiteFont = const TextStyle(fontSize: 24.0, color: Colors.white);
 
+  bool mockNotificationShown = false;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+  Future.delayed(Duration(seconds: 5)).then((__) {
+    if (!mockNotificationShown){
+    mockNotificationShown = true;
+    showOverlayNotification((context) {
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 4),
+      child: SafeArea(
+        child: ListTile(
+          leading: SizedBox.fromSize(
+              size: const Size(40, 40),
+              child: Icon(
+                    Icons.star,
+                    color: Colors.blue,
+                    size: 30.0,
+                  ),
+              ),
+          title: Text('9Freebies!'),
+          subtitle: Text('You have a new invitation for a 9Freebie!'),
+          trailing: IconButton(
+              icon: Icon(Icons.close),
+              onPressed: () {
+                OverlaySupportEntry.of(context).dismiss();
+              }),
+        ),
+      ),
+    );
+  }, duration: Duration(milliseconds: 4000));
+    }});
+
+    return Scaffold(      
       appBar: AppBar(
         title: Image.asset('assets/nine_freebies_logo.png'),
         backgroundColor: new Color(0xff1b2d36),
@@ -48,7 +81,7 @@ class RandomWordsState extends State<RandomWords> {
     );
   }
 
-  Widget _container() {
+  Widget _container() {    
     return Column(
       children: <Widget>[
         Expanded(
@@ -206,7 +239,8 @@ class RandomWordsState extends State<RandomWords> {
         }
       },      
     );
-  }
+  } 
+
 }
 
 class RandomWords extends StatefulWidget {
@@ -259,5 +293,5 @@ class _InvitationLoadingPageState extends State<InvitationLoadingPage> {
         )
       )
     ); // this widget stays here for 2 seconds
-  }
+  }  
 }

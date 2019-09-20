@@ -23,6 +23,7 @@ dependencies:
   path:
   path_provider:
   flutter_rating_bar: ^1.1.0
+  overlay_support: ^1.0.0
 
 
   # The following adds the Cupertino Icons font to your application.

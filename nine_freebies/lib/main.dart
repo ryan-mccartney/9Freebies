@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 import 'utils.dart';
+import 'package:overlay_support/overlay_support.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,14 +9,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return OverlaySupport(child:MaterialApp(
       title: '9Freebies',
       theme: ThemeData(
         // This is the theme of your application.
         primarySwatch: Colors.lightBlue
       ),
       home: MyHomePage(title: '9Freebies'),
-    );
+    ));
   }
 }
 
