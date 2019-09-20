@@ -5,7 +5,8 @@ import 'package:nine_freebies/roundedTextField.dart';
 import 'package:nine_freebies/sharing_bar.dart';
 import 'package:card_settings/card_settings.dart';
 import 'package:nine_freebies/hashtag_text_field.dart';
-
+import 'home.dart';
+import 'registration.dart';
 
 class ReviewScreen extends StatelessWidget {
 
@@ -165,7 +166,9 @@ class ReviewForm extends State<Review> {
                 children: <Widget>[
                   CardSettingsButton(
                     label: 'Continue',
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => LoadingPage()));
+                    },
                     visible: true,
                     backgroundColor: Colors.blueAccent,
                     bottomSpacing: 4.0
