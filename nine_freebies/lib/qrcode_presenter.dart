@@ -70,6 +70,7 @@ class QRCodePresenter extends State<QRCode> {
     var reviewItem = new ReviewItem(
       productName: 'A2 Lactose-Free Milk',
       requiredTags: requiredTags,
+      ratingQuestion: 'How did you find this Freebie?'
     );
 
     final form = _formKey.currentState;
